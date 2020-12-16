@@ -1,0 +1,93 @@
+This is BibTeX, Version 0.99d (TeX Live 2020)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+The style file: splncs03.bst
+Database file #1: main-ref.bib
+Warning--empty year in ArmknechtBBK16
+Warning--empty year in armknecht2014outsourced
+Warning--empty year in DBLP:conf/ccs/AtenieseBCHKPS07
+Warning--empty year in Storage-Time
+Warning--empty year in AteniesePMT08
+Warning--empty year in DBLP:conf/crypto/BadertscherMTZ17
+Warning--empty year in BonehBBF18
+Warning--empty year in BonehN00
+Warning--empty year in BrakerskiDGM19
+Warning--empty year in CampanelliGGN17
+Warning--empty year in ChenD12
+Warning--empty year in ChvojkaJSS20
+Warning--empty year in DworkN92
+Warning--empty year in ErwayKPT09
+Warning--empty year in DistributedPDP
+Warning--empty year in Audita18
+Warning--empty year in DBLP:conf/fc/GarayJ02
+Warning--empty year in DBLP:conf/crypto/GarayKL17
+Warning--empty year in groza2006chained
+Warning--empty year in HaoXWJW18
+Warning--empty year in DBLP:conf/ccs/JuelsK07
+Warning--empty year in DBLP:conf/cai/Kamara13
+Warning--empty year in KarameC10
+Warning--empty year in KoppBK16
+Warning--empty year in KoppMHKB17
+Warning--empty year in KuppusamyRSBN12
+Warning--empty journal in Filecoin
+Warning--empty year in LuuTKS15
+Warning--empty year in Ma05
+Warning--empty year in MahmoodyMV11
+Warning--empty year in MalavoltaT19
+Warning--empty year in MillerPermacoin
+Warning--empty year in Pedersen91
+Warning--empty year in RennerMK18
+Warning--missing institution in Rivest:1996:TPT:888615
+Warning--empty year in RujRBK18
+Warning--empty year in SenguptaR18
+Warning--empty year in ShenT11
+Warning--empty year in DBLP:conf/ccs/ShiSP13
+Warning--empty year in WatersJHF04
+Warning--empty year in Wesolowski19
+Warning--empty journal in storj14
+Warning--empty year in xu2016lightweight
+Warning--empty year in XueXB19
+Warning--empty year in XueX0B18
+Warning--empty year in Yao82b
+You've used 56 entries,
+            2785 wiz_defined-function locations,
+            877 strings with 13420 characters,
+and the built_in function-call counts, 24044 in all, are:
+= -- 1618
+> -- 1057
+< -- 5
++ -- 427
+- -- 369
+* -- 1455
+:= -- 3344
+add.period$ -- 57
+call.type$ -- 56
+change.case$ -- 424
+chr.to.int$ -- 0
+cite$ -- 102
+duplicate$ -- 2228
+empty$ -- 2160
+format.name$ -- 425
+if$ -- 4915
+int.to.chr$ -- 0
+int.to.str$ -- 56
+missing$ -- 539
+newline$ -- 173
+num.names$ -- 134
+pop$ -- 1295
+preamble$ -- 1
+purify$ -- 285
+quote$ -- 0
+skip$ -- 549
+stack$ -- 0
+substring$ -- 456
+swap$ -- 975
+text.length$ -- 5
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 220
+warning$ -- 46
+while$ -- 143
+width$ -- 58
+write$ -- 467
+(There were 46 warnings)
