@@ -4,15 +4,15 @@
 
 \section{Preliminaries}
 
-\vspace{-2mm}
+%\vspace{-2mm}
 
  In this section we provide the main primitives used in this work. We provide a notation table  in Appendix \ref{sec:notation-table}.
 
-\vspace{-4mm}
+%\vspace{-4mm}
 
 \subsection{Smart Contract} 
 
-\vspace{-2mm}
+%\vspace{-2mm}
 
 Cryptocurrencies, such as Bitcoin and Ethereum, in addition to offering a decentralised currency,  support  computations on  transactions. In this setting, often a certain computation logic is encoded in a computer program, called \emph{``smart contract''}. To date, Ethereum is the most predominant cryptocurrency framework that enables users to define arbitrary smart contracts. In this framework,  contract code is stored on the blockchain and  executed by all parties (i.e. miners) maintaining the cryptocurrency,  when the program inputs are provided by transactions. The program execution's  correctness  is  guaranteed by the security of the underlying blockchain components. To prevent  a denial of service attack, the framework requires a transaction creator to pay a  fee, called \emph{``gas''}, depending on the complexity of the contract running on  it.  
 
@@ -23,10 +23,10 @@ Cryptocurrencies, such as Bitcoin and Ethereum, in addition to offering a decent
 
 %Nonetheless,  Ethereum smart contracts suffer from an important   issue; namely, the \emph{lack of privacy}, as it requires  every contract's data to be public, which is a major impediment  to  the broad adoption of  smart contracts when a certain level of privacy is desired. To address the issue, researchers/users may either (a)  utilise existing decentralised frameworks  which support privacy-preserving smart contracts, e.g. \cite{KosbaMSWP16}. But, due to the use of generic and computationally expensive cryptographic tools,  they impose a significant cost to their users. Or (b)  design  efficient tailored cryptographic protocols  that preserve (contracts) data privacy, even though non-private smart contracts are used. We take the latter approach in this work. 
 
-\vspace{-4mm}
+%\vspace{-4mm}
 
 \subsection{Commitment Scheme} 
-\vspace{-1.4mm}
+%\vspace{-1.4mm}
 
 A commitment scheme involves two parties:  \emph{sender} and  \emph{receiver}, and includes  two phases: \emph{commit} and  \emph{open}. In the commit phase, the sender  commits to a message: $m$ as $\mathtt{Com}(m,d)=h$, that involves a secret value: $d$. At the end of the commit phase,  the commitment: $h$ is sent to the receiver. In the open phase, the sender sends the opening: $\ddot{p}=(m,d)$ to the receiver who verifies its correctness: $\mathtt{Ver}(h,\ddot{p})\stackrel{\scriptscriptstyle ?}=1$ and accepts if the output is $1$.  A commitment scheme must satisfy two properties: (a) \textit{hiding}: infeasible for an adversary  to learn any information about the committed  value: $m$, until the commitment: $h$ is opened, and (b) \textit{binding}:   infeasible for an adversary (i.e. the sender) to open a commitment: $h$ to different values: $\ddot{p}'=(m',d')$ than that used in the commit phase, i.e. infeasible to find  $\ddot{p}'$, \textit{s.t.} $\mathtt{Ver}(h,\ddot{p})=\mathtt{Ver}(h,\ddot{p}')=1$, where $\ddot{p}\neq \ddot{p}'$.  There exist efficient non-interactive  commitment schemes both in (a) the random oracle model using the well-known hash-based scheme  that $\mathtt{Com}(m,d)$ involves computing: $\mathtt{H}(m||d)=h$ and $\mathtt{Ver}(h,\ddot{p})$ requires checking: $\mathtt{H}(m||d)\stackrel{\scriptscriptstyle ?}=h$, where $\mathtt{H}(.)$ is a collision resistance hash function, and (b)  the standard model, e.g. Pedersen scheme \cite{Pedersen91}. 
 

@@ -1,7 +1,7 @@
 % !TEX root =main.tex
 
 
-\vspace{-8mm}
+%\vspace{-8mm}
 
 \section{Smarter Outsourced PoR (SO-PoR) Using C-TLP}
    %\vspace{-5mm}
@@ -9,11 +9,11 @@
  
  
 
- \vspace{-3mm}
+ %\vspace{-3mm}
  
 \subsection{SO-PoR Overview} 
 
- \vspace{-2.2mm}
+ %\vspace{-2.2mm}
  
 %SO-PoR uses a unique combination of (a) homomorphic MAC-based PoR \cite{DBLP:conf/asiacrypt/ShachamW08}, (b) C-TLP, and (c) a smart contract. It uses the MAC-based PoR, due to its high efficiency. Since the MAC's are privately verifiable and secret verification keys are needed to check PoR proofs, it also uses C-TLP to efficiently make them publicly verifiable. In this case, C-TLP encapsulates the verification keys and reveals each of them to verifiers only after a certain time. This combination allows the protocol to \emph{take advantage of MAC's efficiency in the setting where public verifiability is needed}. The combination of the two primitives has applications beyond PoR. SO-PoR also utilises a smart contract who acts as a public verifier on the client's behalf to verify proofs and pay an honest server. The MAC's and CTL combination also makes it possible to use a smart contract (which does not inherently support a private state) while keeping costs very low. 
 
@@ -26,11 +26,11 @@ At a high-level  SO-PoR works as follows. The client encodes its file using an e
 
 
 
-\vspace{-7mm}
+%\vspace{-7mm}
 
 \subsection {SO-PoR Model Overview}\label{SO-PoR-Model}
 
-\vspace{-2mm}
+%\vspace{-2mm}
 SO-PoR model is built upon the traditional PoR paradigm \cite{DBLP:conf/asiacrypt/ShachamW08} which   is a challenge-response  protocol where a server proves to  an honest client that its file is retrievable (see  Appendix \ref{PoR-Model} for a formal definition of the PoR). In  SO-PoR, however,  a client may not be available for   verification. So, it wants to  delegate  a set of verifications that it cannot carry out. Informally, in this setting, it (in addition to file retrievability)  must have three guarantees: (a) \emph{verification correctness}: every verification is performed honestly, so  the client can trust the verification's result  without redoing it, (b) \emph{real-time detection}: the client is notified in almost real-time when a  proof is rejected, and (c) \emph{fair payment}: in every verification, the server is paid only if a  proof  is accepted. In SO-PoR, three parties are involved: an honest client, potentially malicious server  and a standard smart contract. SO-PoR also, analogous to  \cite{DBLP:conf/asiacrypt/ShachamW08},  allows a client to perform the verification itself,  when it is available. We present our formal definition of SO-PoR in  Appendix \ref{SO-PoR-Model}.  
 
 \vspace{-3mm}
@@ -157,7 +157,8 @@ $$\forall b, 1\leq b\leq c: x_{\scriptscriptstyle b,j}=\mathtt{PRF}(v_{\scriptsc
 \end{enumerate}
 If either check fails, it aborts and notifies the client. 
 
-\vspace{-1mm}
+%\vspace{-1mm}
+
 \item \textit{\textbf{Client-server PoR}}: When the client is online, it can   interact  with the server  to check its data availability too. In particular, it sends $c$ random challenges and random indices to the server who computes POR using only: (a) the  messages sent by the client in this step, (b) the  file: ${\bm{F}}$, and (c) the tags:  $\sigma_{\scriptscriptstyle i}\in\sigma$, generated in step \ref{gen-client-server-tags}.  The proof generation and verification are similar to the MAC-based schemes, e.g.  \cite{DBLP:conf/asiacrypt/ShachamW08}. 
 \end{enumerate}
 
@@ -176,20 +177,20 @@ Let $\mathcal{M}_{\scriptscriptstyle i}$ be a blockchain miners and $\beta$ be t
 %\begin{remark}
 %In SO-PoR, for a security reason the server must record $j\text{\small{-th}}$ PoR proof in the contract before $l_{\scriptscriptstyle j}$ is recovered. Also,  the way disposable tags are generated in SO-PoR  differs from those computed  in previous PoR schemes, despite having similarities structure-wise. Moreover, with slight adjustments, we can reduce the contract-side storage cost to constant.  For more details, we refer readers to Appendix \ref{SO-PoR-discussion} which also explains why strawman approaches are not suitable substitutes for SO-PoR. 
 %\end{remark}
-\vspace{-3mm}
+%\vspace{-3mm}
 %\subsection{Extension: Reducing Smart Contract Storage Cost to Constant}\label{storage-cost-reduction}
 %
 %
 %With minor adjustments, we can reduce the smart contract storage cost from $O(z)$ to constant, $O(1)$ and offload the cost to the server. The idea is that the client after computing the commitmnet vector: $\vv{\bm{h}}=[h_{\scriptscriptstyle 1},...h_{\scriptscriptstyle z}]$,  in step \ref{Gen-Puzzles-}, it preserves the ordering of the elements (i.e. $h_{\scriptscriptstyle j}$ is associated with $j^{\scriptscriptstyle th} $ verification) and constructs a  Merkle tree  on top of them. It stores the tree and the vector on the server, and stores only the tree's  root: $R$, on the contract. In this case,  the server in step \ref{fully-recover-l} after recovering $\ddot{p}_{\scriptscriptstyle j}= (l_{\scriptscriptstyle j}, d_{\scriptscriptstyle j})$,  computes: $h_{\scriptscriptstyle j}=\mathtt{H}(l_{\scriptscriptstyle j}||d_{\scriptscriptstyle j})$, and sends a Merkle tree proof (that $h_{\scriptscriptstyle j}$ corresponds to  $R$) along with $\ddot{p}_{\scriptscriptstyle j}$ to the contract. In step \ref{check-hash}, the contract: (a) checks if $h_{\scriptscriptstyle j}=\mathtt{H}(l_{\scriptscriptstyle j}||d_{\scriptscriptstyle j})$, and  (b) verifies the Merkle tree proof.  The rest  remains unchanged.  As a result, the number of values stored in the contract is now $O(1)$. This adjustment comes with an added communication cost: $O(|h_{\scriptscriptstyle j}|\log z)$ for each verification. Nevertheless, the added cost is small and independent of the file size.   For instance, when  $z=10^{\scriptscriptstyle 6}$ and $|h_{\scriptscriptstyle j}|=256$, the  added communication cost is only about $5.1$ kilobit.
 
-\vspace{-5mm}
+%\vspace{-5mm}
 
 \subsection{Evaluation}
 
 In this section, we provide a summary of comparisons between   SO-PoR and outsourced PoRs  \cite{armknecht2014outsourced,xu2016lightweight,Storage-Time}. Among the two protocols  in \cite{Storage-Time} we only consider ``basic PoSt'' as it supports public verifiability. Briefly, in terms of property, only SO-PoR offers an explicit solution for real-time detection and fair payment. In terms of computation cost, the verification algorithm in SO-PoR is much faster than the other three protocols; Specifically, when $c=460$,  SO-PoR verification\footnote{As shown in \cite{DBLP:conf/ccs/AtenieseBCHKPS07}, to ensure $99\%$ of file blocks is retrievable, it  suffices to set $c=460$.} needs about $4.5$ times fewer computation than the verification required in the fastest outsourced PoR \cite{armknecht2014outsourced}.   Also, \cite{armknecht2014outsourced} has the worst store cost, that is  much higher than that of SO-PoR; e.g. for a $1$-GB file, SO-PoR requires over $46 \times 10^{\scriptscriptstyle 5}$ times fewer exponentiations than \cite{armknecht2014outsourced} needs in the same phase.  SO-PoR and \cite{Storage-Time} require a server to solve puzzles (and the imposed cost has to be compensated by the client) but the other two protocols do not need that. Also,  I/O cost and proof complexity of all protocols are $O(1)$ except \cite{Storage-Time} whose I/O cost and proof complexity are $O(\log n)$. The server-side bandwidth of SO-PoR is much lower than the rest;  e.g., for $1$-GB file and $z=100$ verifications, a server in SO-PoR requires $9\times 10^{\scriptscriptstyle4}$,  $7$ and $1729$ times fewer bits  than those required in \cite{armknecht2014outsourced}, \cite{xu2016lightweight} and \cite{Storage-Time} respectively.  A client in SO-PoR has a higher bandwidth than the rest (but this cost is one-off). Thus, SO-PoR offers additional properties, it has lower verification cost and lower server-side bandwidth than the rest while its other costs remain reasonable. Table \ref{table::O-PoR-Cost} outlines the cost comparison results. For a  full analysis, we refer readers to Appendix \ref{Full-Evaluation} where  we also compare SO-PoR costs with that of the most efficient  traditional PoR  \cite{DBLP:conf/asiacrypt/ShachamW08}.
 
 
-\vspace{-3mm}
+%\vspace{-3mm}
 \input{table-PoR-cost.tex}
 
 

@@ -11,10 +11,12 @@ Proofs of retrievability (PoR) schemes, introduced in \cite{DBLP:conf/ccs/JuelsK
 %Although in \cite{armknecht2014outsourced} a client is considered to be malicious from an auditor point of view,  the protocol assumes the client behaves honestly towards the server. %Similarly, in this paper, we assume the client is honest. 
 
 %In these protocols,  a client uploads its data  to a server once, then  the server generates proofs of storage (e.g. PoR) periodically, collects them and sends the collection after  time $T$ to a verifier  who can check the proofs. 
-\vspace{-1mm}
+
+%\vspace{-1mm}
+
 \noindent\textbf{Blockchain-based PoR.} There exist distributed PoR schemes that let a client  distribute its file among different (tailored) blockchain nodes,  e.g. Permacoin \cite{MillerPermacoin}, Filecoin  \cite{Filecoin}, and KopperCoin \cite{KoppBK16}. But,  they have either a large proof size (e.g. in \cite{MillerPermacoin,Filecoin})  logarithmic with the  file size when a  Merkle tree is used, or high concrete verification overhead (e.g. in \cite{KoppBK16}) due to the use of BLS signatures. There are protocols that use blockchain to verify the retrievability of off-chain data \cite{RennerMK18,HaoXWJW18,ZhangDLZ18,Audita18,blockchain-data-audit-18,sia14}. Nevertheless, they either impose a high communication/computation cost \cite{RennerMK18,HaoXWJW18,Audita18,blockchain-data-audit-18,sia14}, or  clients have to be online for each verification  \cite{ZhangDLZ18}.  Campanelli \textit{et al.}  \cite{CampanelliGGN17}  present a fair exchange mechanism over a blockchain that ensures the server gets paid if it provides an accepting PoR proof. But, this scheme assumes either the client can   perform the verification itself or a third-party, acting on the client's behalf,  carries out the verification honestly. 
 
-\vspace{-2mm}
+
 %BonehBBF18,Wesolowski19
 
 

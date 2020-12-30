@@ -2,15 +2,15 @@
 
 
 
-\vspace{-3mm}
+
 \section{Multi-instance  Time-lock Puzzle}
 
-\vspace{-4mm}
+
 
 
 \subsection{Strawman Solution}\label{C-TLP-overview}
 
-\vspace{-3mm}
+
 
 In the following, we elaborate on the  problems that would arise if an existing time-lock puzzle is used directly to handle  multiple puzzles at once.  Without loss of generality, to illustrate the problems, we use the well-known TLP scheme presented in Section \ref{Time-lock-Encryption}. 
 
@@ -22,13 +22,13 @@ Consider the case where a client wants a server to learn a vector of messages: $
 
 \noindent\textit{\textbf{Parallel Composition Problem}}. The above naive approach yields two serious issues: (a) imposing a high computation cost, as  the server has to perform $S\Delta \sum\limits_{\scriptscriptstyle j=1}^{\scriptscriptstyle z}j$ squaring to decrypt all   messages, and (b) demanding a high level of parallelisation, as each puzzle has to be dealt with separately in parallel to the rest.  The  issues can be cast  as  ``\emph{parallel composition problem}'', where $z$ instances of a puzzle scheme are given at once to a server whose only option, to find solutions on time, is to solve them in parallel.\footnote{It should not be confused with the ``universally composable'' notion put forth in \cite{Canetti01}.} Also, for the client  to efficiently compute $a_{\scriptscriptstyle j}$  for each  message $m_{\scriptscriptstyle j}$,  where $j>1$, it has to perform at least one modular multiplication, i.e. $a_{\scriptscriptstyle j}=a_{\scriptscriptstyle 1} a_{\scriptscriptstyle j-1}=2^{\scriptscriptstyle j  T}$, where $a_{\scriptscriptstyle 1}=2^{\scriptscriptstyle T}$. In this step, in total $z-1$ modular multiplications are required  to compute all $a_{\scriptscriptstyle j}$ values, for $z$ messages (which is not optimal). Note, we do not see the above issues as  previous schemes' flaws, because they were not initially designed for the multi-puzzle setting.  
  
-\vspace{-3mm}
+%\vspace{-3mm}
 
 
 
  \subsection{An Overview of our Solutions}\label{Overview-of-our-Solutions}
  
- \vspace{-2mm}
+ %\vspace{-2mm}
  
  Our key observation is, in the naive approach, the process of decrypting  messages has many overlaps  leading to a high  computation cost. So,  by removing the overlaps, we can considerably lower the overall cost both in \emph{puzzle solving} and \emph{puzzle creating} phases.  One of our core ideas  is to chain the puzzles. While chaining different puzzles may seem a relatively obvious approach to tackle the  issues, designing a secure protocol that also can make black-box use of a standard time-lock puzzle scheme, supports public verifiability, and has low costs is challenging (we refer readers to Remark \ref{remark::trivial-chaining} for a detailed discussion). In our solution, a client  first encrypts the message  that is supposed to be decrypted after the rest and embeds the information needed for decrypting it into the ciphertext of the message that will be decrypted before that message. In other words, the client integrates the information (i.e. a part of public keys) needed to decrypt message $m_{\scriptscriptstyle j}$ into the ciphertext related to message $m_{\scriptscriptstyle j-1}$. In this case, the server after learning message $m_{\scriptscriptstyle j-1}$ at time $f_{\scriptscriptstyle j-1}$ learns the public key needed to perform the sequential squaring to decrypt the next message: $m_{\scriptscriptstyle j}$. This means after fully decrypting $m_{\scriptscriptstyle j-1}$, the server starts  squaring sequentially to decrypt $m_{\scriptscriptstyle j}$
   
@@ -42,11 +42,11 @@ Consider the case where a client wants a server to learn a vector of messages: $
   
     The approach also allows  the client at the setup to compute only a single $a=2^{\scriptscriptstyle T}$  reusable for all $z$ puzzles, imposing only $O(1)$  cost. 
 
-\vspace{-5mm}
+%\vspace{-5mm}
 
 \subsection{Multi-instance   Time-lock Puzzle Definition}\label{Section::Multi-instance-Time-lock Puzzle-Definition}
 
-\vspace{-1mm}
+%\vspace{-1mm}
 
 In this section, we provide a formal definition of a multi-instance time-lock puzzle. Our starting point is the  time-lock puzzle definition, i.e. Definition \ref{Def::Time-lock-Puzzle}, but we extend it from several  perspectives, so it can: (a) handle multiple  solutions/messages in setup, (b)  produce multiple puzzles for the messages,   (c) solve the puzzles given the puzzles and public parameters, and (d) support public verifiability. In the following, we provide the formal definition of a multi-instance  time-lock puzzle.
 \begin{definition}[Multi-instance Time-lock Puzzle] A multi-instance time-lock puzzle has the following  five algorithms and satisfies completeness and efficiency properties. 
@@ -124,7 +124,7 @@ Informally, a multi-instance time-lock puzzle is secure if it satisfies two prop
 %  xxx The above definition also captures the sequentiality for a single solution as well that means the adversary cannot find a single solution significantly less than required steps. 
 %  
  
-   \vspace{-1mm}
+   %\vspace{-1mm}
   
 \begin{definition}[Multi-instance Time-lock Puzzle's Solution-Privacy]\label{Def::Solution-Privacy} A multi-instance time-lock puzzle  is privacy-preserving  if for all $\lambda$ and  $\Delta$,  any number of puzzle: $z\geq1$, any $j$ (where $1\leq j \leq z$), any pair of randomised algorithm $\mathcal{A} : (\mathcal{A}_{\scriptscriptstyle 1},\mathcal{A}_{\scriptscriptstyle 2})$, where $\mathcal{A}_{\scriptscriptstyle 1}$ runs in  time $O(poly(j\Delta,\lambda))$ and $\mathcal{A}_{\scriptscriptstyle 2}$ runs in  time $\delta(j\Delta)<j\Delta$ using at most $\pi(\Delta)$ parallel processors, there exists a negligible function $\mu(.)$, such that: 
 \small{
@@ -191,17 +191,17 @@ where $\vv{{\bm{m}}}=[m_{\scriptscriptstyle 1},...,m_{\scriptscriptstyle z}]$, a
 \begin{definition}[Multi-instance Time-lock Puzzle Security]\label{def::C-TLP-security} A multi-instance time-lock puzzle scheme  is secure if it meets solution-privacy and solution-validity properties. 
 \end{definition}
 
-\vspace{-6mm}
+%\vspace{-6mm}
 
 \subsection{Chained  Time-lock Puzzle (C-TLP) Protocol}\label{Section::C-TLP-protocol}
 
-\vspace{-1mm}
+%\vspace{-1mm}
 
 In this section, we present the chained  time-lock puzzle (C-TLP), an instantiation of the multi-instance time lock puzzle. Since we have already presented an outline of C-TLP (in Section \ref{Overview-of-our-Solutions}), in this section we present C-TLP protocol in detail.  Recall, a client wants a server to learn a vector of messages: $\vv{\bm{m}}=[m_{\scriptscriptstyle 1},...,m_{\scriptscriptstyle z}]$ at times  $[f_{\scriptscriptstyle 1},...,f_{\scriptscriptstyle z}]$ respectively, where the client is available and online only at an earlier time $f_{\scriptscriptstyle 0}< f_{\scriptscriptstyle 1}$.  Also, the client wants to ensure that anyone can validate a solution found by the  server, i.e. supports public verifiability. For the sake of simplicity, let $\Delta=f_{\scriptscriptstyle 1}-f_{\scriptscriptstyle 0}$ and $\Delta=f_{\scriptscriptstyle j+1}-f_{\scriptscriptstyle j}$, where $1\leq j \leq z$ and $T=S \Delta$. Below, we provide C-TLP protocol. We refer readers to Appendix \ref{discussion-C-TLP} for further remarks on the protocol. 
 
 \input{CR-TLP-protocol-v2.tex}
 
-\vspace{-3mm}
+%\vspace{-3mm}
 
    \begin{theorem}[C-TLP Security]\label{C-TLP-Sec}  C-TLP  is a secure multi-instance time-lock puzzle. 
    \end{theorem}
